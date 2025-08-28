@@ -1,6 +1,6 @@
 import os
 
-RADAR_CENTER = (37.4866, -122.16382)
+RADAR_CENTER = (os.environ.get("LAT"), os.environ.get("LONG"))
 
 
 FLIGHT_DATA_URL = os.environ.get("PIAWARE")
