@@ -131,8 +131,7 @@ class RadarDisplay:
     
     def draw_modern_aircraft(self):
         for callsign, x, y in self.aircraft_data:
-            # Apply scaling factor to make aircraft visible
-            scale_factor = self.radius / (MAX_RANGE_KM * 1000)  # Convert km to meters
+            scale_factor = self.radius / (MAX_RANGE_KM * 1000) 
             scaled_x = x * scale_factor
             scaled_y = y * scale_factor
             
@@ -140,7 +139,7 @@ class RadarDisplay:
             screen_y = self.center[1] + int(scaled_y)
             
             distance = math.sqrt(x**2 + y**2)
-            if distance <= MAX_RANGE_KM * 1000:  # Convert km to meters
+            if distance <= MAX_RANGE_KM * 1000: 
                 transformed_pos = self.apply_transform((screen_x, screen_y))
                 
                 pygame.draw.circle(self.screen, self.RED, transformed_pos, 4)
@@ -170,8 +169,6 @@ class RadarDisplay:
             position_angle = math.degrees(math.atan2(dx, -dy)) % 360
             trigger_angle = (position_angle - self.lead_degrees) % 360
 
-            angle_diff = abs((position_angle - self.sweep_angle + 180) % 360 - 180)
-            sweep_tolerance = 10000000000000000  # degrees tolerance for perfect alignment
             already_blipped = self.last_blip_cycle_by_callsign.get(callsign) == self.sweep_cycle
             if not already_blipped:
                 new_blips.append((screen_x, screen_y, 0, 255, callsign))
@@ -182,7 +179,7 @@ class RadarDisplay:
         updated_blips = []
         for x, y, age, intensity, callsign in self.blips:
             new_age = age + 1
-            new_intensity = max(0, intensity - 12)  # Increased from 8 to 12
+            new_intensity = max(0, intensity - 12) 
             
             if new_intensity > 0:
                 updated_blips.append((x, y, new_age, new_intensity, callsign))
