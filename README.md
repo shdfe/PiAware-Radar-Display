@@ -33,9 +33,7 @@ This project uses a **producer-consumer pattern** with real-time threading:
 ## Setup
 
 1. **Install dependencies**:
-   ```bash
-   pip install -r requirements.txt
-   ```
+   Ensure you have latest Pygame and Requests
 
 2. **Configure your radar**:
    - Edit `config.py` to set your radar center coordinates
